@@ -6,10 +6,14 @@
 
 /*
 
-//Implemenation:
-    //1. Split the array into half.
-    //2. Calculate the sum of each elements in both the halves, simulataneously
+Implemenation:
+1. Split the array into half.
+2. Calculate the sum of each elements in both the halves, simulataneously
+3. Return the sum separately
 
+*/
+
+/*
 int main(void){
 
     int start, end;
@@ -43,9 +47,11 @@ int main(void){
     }
 
     printf("Sum is: %d\n", sum);
-
-
 }
+
+*/
+
+/*
 
 OUTPUT:
 Sum is: 22          -> Parent sum
@@ -54,8 +60,15 @@ Sum is: 6           -> Child sum
 */
 
 
-//Implementation: Inter-Process Commn
-//Now send the sum of Child_process to Parent_process (using pipe)
+/*
+
+Implementation: Inter-Process Commn
+Now send the sum of Child_process to Parent_process (using pipe)
+
+*/
+
+
+/*
 
 int main(void){
 
@@ -112,3 +125,28 @@ int main(void){
 
 
 }
+
+*/
+
+
+/*
+
+Explanation of above code:
+
+File descriptor creation:
+Before forking, the parent process creates a pipe using pipe(fd).
+This creates two file descriptors: fd[0] for reading and fd[1] for writing.
+
+Forking:
+When fork() is called, the operating system creates an exact copy of the parent process.
+This copy includes all the memory, variables, and open file descriptors of the parent process.
+
+Child process inheritance:
+The child process inherits a copy of all the parent's file descriptors.
+This means the child process has its own copies of fd[0] and fd[1], which refer to the same pipe as the parent's file descriptors.
+
+After forking:
+Both the parent and child processes now have access to the same pipe through their respective file descriptors.
+They can use these to communicate with each other.
+
+*/

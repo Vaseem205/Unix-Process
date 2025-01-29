@@ -2,7 +2,7 @@
 pipe() -> It is used for inter-process communication
 
 Steps to implement pipe:
-1. Create an array of size 2 (i.e. file descriptor -> this is used to read and write from the file [i.e. stdin, stdout]). Ex: int fd[2].
+1. Create an array of size 2 (i.e. file descriptor -> this is used to read and write from the file [instead of using stdin, stdout]). Ex: int fd[2].
    We had an array of size 2 cuz, the pipe had 2 ends.
    fd[0] -> READ
    fd[1] -> WRITE
@@ -55,10 +55,13 @@ int main(void){
 
 }
 
+*/
 
-// OUTPUT:
-// Enter a number: 42                           -> happened in child_process
-// Number given by child process: 42            -> happened in parent_process
+/*
+
+OUTPUT:
+Enter a number: 42                           -> happened in child_process
+Number given by child process: 42            -> happened in parent_process
 
 */
 

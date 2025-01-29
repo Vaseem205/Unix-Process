@@ -1,3 +1,27 @@
+/*
+
+Why we need fifo for ineter-process communication, if we have pipes?
+
+Pipes:
+Pipes are a way for processes to communicate.
+They can only be used by processes in the same hierarchy (parent-child relationship).
+When you create a pipe, you get two file descriptors (FDs).
+These FDs are special because they're copied to child processes when you fork.
+
+
+Limitations of pipes:
+You can't use pipes between unrelated processes (processes not in the same hierarchy).
+
+
+FIFO (First In, First Out):
+FIFO is another feature in UNIX systems for inter-process communication.
+It's similar to pipes but more flexible.
+FIFOs are represented as a special type of file in the filesystem.
+Any process can open and use a FIFO, regardless of hierarchy.
+
+*/
+
+
 //This is also called as -> Named FIFO
 
 #include <stdio.h>
@@ -34,8 +58,8 @@ int main(void){
 -------
 OUTPUT:
 -------
-The program creates fifo1 and opens. After that it'll hang.
-The reason behind this behaviour of fifo (written in linux manual).
+The program creates fifo1 and opens a write only file descriptor. After that it'll hang.
+The reason behind this behaviour of fifo (written in linux manual) is:
 
 open() blocks until both ends of the FIFO are opened; it hangs here as only write end is opened.
 
@@ -93,7 +117,7 @@ If you open just one terminal and run `cat fifo1`:
 NOTE:
 -----
 Instead of  : int fd = open("fifo1", O_WRONLY); //Write Only
-If if do    : int fd = open("fifo1", O_RDWR);   //Read & Write, now the program won't hang, as both the ends of FIFO (i.e. fifo1) are open.    
+If I do    : int fd = open("fifo1", O_RDWR);   //Read & Write, now the program won't hang, as both the ends of FIFO (i.e. fifo1) are open.    
 
 
 */

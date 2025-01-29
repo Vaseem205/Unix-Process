@@ -3,7 +3,7 @@
 In order to suspend the parent process execution until the child process state changes(wait for child process to complete),
 we can use the wait() or waitpid() system calls from the <sys/wait.h> library.
 
-wait(): This sys call retrive info about irst terminated child process.
+wait(): This sys call retrive info about first terminated child process.
 waitpid(): It is flexible version of wait(). It allows a parent process to wait for a specific child process to terminate.
 
 
