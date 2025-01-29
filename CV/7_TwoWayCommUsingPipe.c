@@ -47,8 +47,8 @@ int main(){
             return 5;
         }
 
-        close(child_pipe[1]);
-        close(parent_pipe[0]);
+        close(child_pipe[0]);
+        close(parent_pipe[1]);
     }else{
         close(child_pipe[1]);
         close(parent_pipe[0]);
