@@ -68,7 +68,7 @@ Now send the sum of Child_process to Parent_process (using pipe)
 */
 
 
-/*
+
 
 int main(void){
 
@@ -126,7 +126,7 @@ int main(void){
 
 }
 
-*/
+
 
 
 /*
