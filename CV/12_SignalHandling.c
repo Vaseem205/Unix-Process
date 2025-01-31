@@ -9,6 +9,8 @@ We gonna change the way process behaves for these two signals:
 1. Ctrl+Z (SIGTSTP)
 2. fg (SIGCONT)
 
+by using sigaction structure
+
 */
 #define _XOPEN_SOURCE 700
 #include <stdio.h>
@@ -28,9 +30,9 @@ int main(){
 
     struct sigaction sa;
     sa.sa_handler = &handleCONT;
-    sa.sa_flags = SA_RESTART;           // to avoid some erros which occurs due to the conflict with scanf()
-    // sigaction(SIGTSTP, &sa, NULL);      // whenever you press Ctrl+Z, handleSIGTSTP() gets called
-    sigaction(SIGCONT, &sa, NULL);
+    sa.sa_flags = SA_RESTART;               // to avoid some erros which occurs due to the conflict with scanf()
+    // sigaction(SIGTSTP, &sa, NULL);       // whenever you press Ctrl+Z, handleSIGTSTP() gets called
+    sigaction(SIGCONT, &sa, NULL);          // NULL: Holds the previous state.
 
     int num;
     printf("Enter a number: ");
